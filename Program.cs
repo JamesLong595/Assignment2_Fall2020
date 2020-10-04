@@ -14,6 +14,7 @@ namespace Assignment2_Fall2020
             {
                 try
                 {
+                    Console.WriteLine("\n** print a triangle of arbitary height **\n"); 
                     Console.WriteLine("Please enter a positive integer:");
                     int n = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
@@ -41,8 +42,9 @@ namespace Assignment2_Fall2020
             {
                 try
                 {
+                    Console.WriteLine("\n** print the length of longest continuous increasing subsequence **\n");
                     // collect data from user and convert to an integer array
-                    Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
+                    Console.WriteLine("\nEnter a comma-separated array of integers in any order:\n");
                     string input = Console.ReadLine();
                     string[] strArr = input.Split(",");
                     int[] array1 = new int[strArr.Length];
@@ -59,7 +61,7 @@ namespace Assignment2_Fall2020
                     }
                     else
                     {
-                        Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.");
+                        Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.\n");
                         Console.ReadKey();
                         break;
                     }
@@ -76,8 +78,9 @@ namespace Assignment2_Fall2020
             {
                 try
                 {
+                    Console.WriteLine("\n** split an array of integers conditionally & print them, else print false **\n");
                     // collect data from user and convert to an integer array
-                    Console.WriteLine("Enter a comma-separated array of positive integers in any order:\n");
+                    Console.WriteLine("\nEnter a comma-separated array of positive integers in any order:\n");
                     string input = Console.ReadLine();
                     string[] strArr = input.Split(",");
                     int[] array2 = new int[strArr.Length];
@@ -109,6 +112,7 @@ namespace Assignment2_Fall2020
             {
                 try
                 {
+                    Console.WriteLine("\n** square values of an array and return sorted squares **\n");
                     // collect data from user, validate, and convert to an integer array
                     Console.WriteLine(@"
 Enter a comma-separated array of integers sorted in non-decreasing order.
@@ -163,8 +167,9 @@ The maximum allowable value is 10,000.
             {
                 try
                 {
+                    Console.WriteLine("\n** find and print intersection of two arrays **\n");
                     // collect data from user and convert to the first integer array
-                    Console.WriteLine("Enter the first comma-separated array of integers in any order:\n");
+                    Console.WriteLine("\nEnter the first comma-separated array of integers in any order:\n");
                     string input1 = Console.ReadLine();
                     string[] strArr1 = input1.Split(",");
                     int[] nums1 = new int[strArr1.Length];
@@ -210,6 +215,7 @@ The maximum allowable value is 10,000.
             {
                 try
                 {
+                    Console.WriteLine("\n** determine whether number of occurrences of each value in an array is unique **\n");
                     // collect data from user and convert to an integer array
                     Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
                     string input1 = Console.ReadLine();
@@ -238,6 +244,7 @@ The maximum allowable value is 10,000.
             {
                 try
                 {
+                    Console.WriteLine("\n** find missing ranges in an array **\n");
                     // collect data from user and convert to an integer array with boundaries
                     Console.WriteLine("Enter an integer representing the LOWER bound of the range (inclusive):\n");
                     string low = Console.ReadLine();
@@ -289,6 +296,7 @@ The maximum allowable value is 10,000.
             //{
             //    try
             //    {
+            //        Console.WriteLine("\n** create unique folder names **\n");
             //        // explain
             //        Console.WriteLine("Question 8");
             //        string[] names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
@@ -664,8 +672,8 @@ The maximum allowable value is 10,000.
              */
             try
             {
-                string[] folders = new string[] { "" };
-                //
+                string[] folders = new string[] { };
+
                 return folders;
             } // end of try block
             catch (Exception e)
@@ -673,7 +681,7 @@ The maximum allowable value is 10,000.
                 Console.WriteLine($"\nAn {e.GetType().Name} error occured while computing UniqFolderNames()");
                 Console.WriteLine("\nPress any key to continue ...\n");
                 Console.ReadKey();
-                return new string[] { "" };
+                return new string[] { };
             } // end of catch block
         } // end of method UniqFolderNames
     }
