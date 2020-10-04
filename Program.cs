@@ -233,24 +233,54 @@ namespace Assignment2_Fall2020
             //} // end of while loop for unique occurrences
 
 
-            // purpose
+            // find missing ranges in an array
             while (true)
             {
                 try
                 {
-                    // explain
-                    Console.WriteLine("Question 7");
-                    int[] numbers = { 0, 1, 3, 50, 75 };
-                    int lower = 0;
-                    int upper = 99;
-                    List<String> ResultList = Ranges(numbers, lower, upper);
-                    //Write code to print list here
+                    // collect data from user and convert to an integer array with boundaries
+                    Console.WriteLine("Enter an integer representing the LOWER bound of the range (inclusive):\n");
+                    string low = Console.ReadLine();
+                    int lower = int.Parse(low);
+                    Console.WriteLine("\nEnter an integer representing the UPPER bound of the range (inclusive):\n");
+                    string up = Console.ReadLine();
+                    int upper = int.Parse(up);
+                    if (upper < lower)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    Console.WriteLine("\nEnter a comma-separated array of non-decreasing integers:\n");
+                    string input = Console.ReadLine();
+                    string[] strArr = input.Split(",");
+                    int[] numbers = new int[strArr.Length];
+                    int num;
+                    for (int i = 0; i < numbers.Length; i++)
+                    {
+                        num = Convert.ToInt32(strArr[i]);
+                        numbers[i] = num;
+                    } // end of for loop
+                    // the next line of code threw error CS0120: object reference required for the non-static method
+                    // method Ranges was not static, which caused the error
+                    // method Ranges was the only non-static method in the Program.cs file provided by the professor
+                    // making the method static eliminates the error
+                    List<string> ResultList = Ranges(numbers, lower, upper);
+                    if (ResultList == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n[" + string.Join(", ", ResultList) + "]");
+                        Console.WriteLine("\nPress any key to continue ...\n");
+                        Console.ReadKey();
+                        break;
+                    }
                 } // end of try block
                 catch
                 {
                     Console.WriteLine("\nInvalid input ...\n");
                 } // end of catch block
-            } // end of while loop for purpose
+            } // end of while loop for missing ranges
 
 
             //// purpose
@@ -566,35 +596,76 @@ namespace Assignment2_Fall2020
           // if n = total length of the input array, then O(2n) which simplifies to O(n)
 
 
-        public List<String> Ranges(int[] numbers, int lower, int upper)
+        public static List<string> Ranges(int[] numbers, int lower, int upper)
         {
+            // Given a non-decreasing integer array nums, where the range of elements
+            // are in the inclusive range [lower, upper], return its missing ranges.
+            // Return empty array if the given array contains all the elements from the range
+            // or return ["0->99"] if the given array is empty.
             try
             {
-                //
-
+                List<string> missing = new List<string>();
+                int maxIdx = numbers.Length - 1;
+                // find gaps in array up to max value in array
+                for (int i = 0; i <= maxIdx; i++)
+                {
+                    if (i == 0 && numbers[i] == lower) { }
+                    else if (i == 0 && numbers[i] == lower + 1)
+                    {
+                        missing.Add("\"" + Convert.ToString(lower) + "\"");
+                    }
+                    else if (i == 0)
+                    {
+                        missing.Add("\"" + Convert.ToString(lower) + "->" + Convert.ToString(numbers[i] - 1) + "\"");
+                    }
+                    else if (numbers[i] == numbers[i - 1] || numbers[i] - 1 == numbers[i - 1]) { }
+                    else if (numbers[i] - 1 == numbers[i - 1] + 1)
+                    {
+                        missing.Add("\"" + Convert.ToString(numbers[i] - 1) + "\"");
+                    }
+                    else
+                    {
+                        missing.Add("\"" + Convert.ToString(numbers[i - 1] + 1) + "->" + Convert.ToString(numbers[i] - 1) + "\"");
+                    }
+                } // end of for loop
+                // find gaps in array above max value in array
+                if (numbers[maxIdx] == upper) { }
+                else if (numbers[maxIdx] + 1 == upper)
+                {
+                    missing.Add("\"" + Convert.ToString(numbers[maxIdx] + 1) + "\"");
+                }
+                else
+                {
+                    missing.Add("\"" + Convert.ToString(numbers[maxIdx] + 1) + "->" + Convert.ToString(upper) + "\"");
+                }
+                return missing;
             } // end of try block
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine($"\nAn {e.GetType().Name} error occured while computing Ranges()");
+                Console.WriteLine("\nPress any key to continue ...\n");
+                Console.ReadKey();
+                return new List<string>() { null };
             } // end of catch block
-            return default;
         } // end of method Ranges
+        // if n = total length of the range (upper - lower), then O(n)
 
 
         public static string[] UniqFolderNames(string[] names)
         {
             try
             {
+                string[] folders = new string[] { "" };
                 //
-
+                return folders;
             } // end of try block
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                Console.WriteLine($"\nAn {e.GetType().Name} error occured while computing UniqFolderNames()");
+                Console.WriteLine("\nPress any key to continue ...\n");
+                Console.ReadKey();
+                return new string[] { "" };
             } // end of catch block
-            return default;
         } // end of method UniqFolderNames
     }
 }
