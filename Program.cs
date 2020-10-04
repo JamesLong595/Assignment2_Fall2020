@@ -28,14 +28,14 @@ namespace Assignment2_Fall2020
             //        } // end of if block
             //        else
             //        {
-            //            Console.WriteLine("\nOnly positive integers are allowed.");
+            //            Console.WriteLine("\nOnly positive integers are allowed.\n");
             //        } // end of else block
             //    } // end of try block
             //    catch
             //    {
-            //        Console.WriteLine("\nInvalid input ...");
+            //        Console.WriteLine("\nInvalid input ...\n");
             //    } // end of catch block
-            //} // end of triangle while loop
+            //} // end of while loop for triangle
 
 
             //// print the length of a continuous increasing subsequence
@@ -70,7 +70,7 @@ namespace Assignment2_Fall2020
             //    {
             //        Console.WriteLine("\nInvalid input ...");
             //    }  // end of catch block
-            //} // end of longest continuous increasing subsequence while loop
+            //} // end of while loop for increasing subsequence
 
 
             //// split an array of integers conditionally and print them, else print false
@@ -103,7 +103,7 @@ namespace Assignment2_Fall2020
             //    {
             //        Console.WriteLine("\nInvalid input ...\n");
             //    } // end of catch block
-            //} // end of split array while loop
+            //} // end of while loop for split array
 
 
             //// square values of an array and return sorted squares
@@ -157,7 +157,7 @@ namespace Assignment2_Fall2020
             //    {
             //        Console.WriteLine("\nInvalid input ...\n");
             //    } // end of catch block
-            //} // end of sorted squares while loop
+            //} // end of while loop for sorted squares
 
 
             //// find and print intersection of two arrays
@@ -204,7 +204,7 @@ namespace Assignment2_Fall2020
             //    {
             //        Console.WriteLine("\nInvalid input ...\n");
             //    } // end of catch block
-            //} // end of intersetion while loop
+            //} // end of while loop for intersection
 
 
             Console.WriteLine("Question 6");
@@ -240,12 +240,17 @@ namespace Assignment2_Fall2020
             // * * * * * * *
             try
             {
-                // iterate thru the lines
+                // build a dictionary containing the lines to be printed
+                Dictionary<int, string> stars = new Dictionary<int, string>();
+                for (int i = n; i > 0; i--)
+                {
+                    stars[i] = String.Concat(Enumerable.Repeat("*", i));
+                }
+                // print the dictionary values
                 for (int i = 1; i <= n; i++)
                 {
-                    string newline = new String('*', i);
-                    Console.WriteLine(newline);
-                } // end of for loop
+                    Console.WriteLine(stars[i]);
+                }
                 Console.WriteLine("\nPress any key to continue ...");
                 Console.ReadKey();
             } // end of try block
@@ -256,7 +261,7 @@ namespace Assignment2_Fall2020
                 Console.ReadKey();
             } // end of catch block
         } // end of method PrintPatternAnyComplexity
-        // if n = number of lines then O(n)
+        // if n = number of lines then O(2n) which simplifies to O(n)
 
 
         public static void PrintPatternLinearComplexity(int n)
@@ -481,9 +486,12 @@ namespace Assignment2_Fall2020
 
         public static bool UniqueOccurrences(int[] arr)
         {
+            // Given an array of integers arr, write a function that returns true if and only if
+            // the number of occurrences of each value in the array is unique.
             try
             {
-                //Write your code here;
+                //
+
             }
             catch (Exception)
             {
@@ -498,7 +506,8 @@ namespace Assignment2_Fall2020
         {
             try
             {
-                //Write Your Code Here
+                //
+                
             }
             catch (Exception)
             {
@@ -513,7 +522,8 @@ namespace Assignment2_Fall2020
         {
             try
             {
-                //Write Your Code Here
+                //
+
             }
             catch (Exception)
             {
