@@ -9,228 +9,228 @@ namespace Assignment2_Fall2020
     {
         static void Main(string[] args)
         {
-            //// print a triangle of arbitary height
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        Console.WriteLine("Please enter a positive integer:");
-            //        int n = int.Parse(Console.ReadLine());
-            //        Console.WriteLine("");
-            //        if (n > 0)
-            //        {
-            //            PrintPatternAnyComplexity(n);
-            //            Console.WriteLine("");
-            //            PrintPatternLinearComplexity(n);
-            //            break;
-            //        } // end of if block
-            //        else
-            //        {
-            //            Console.WriteLine("\nOnly positive integers are allowed.\n");
-            //        } // end of else block
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for triangle
+            // print a triangle of arbitary height
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Please enter a positive integer:");
+                    int n = int.Parse(Console.ReadLine());
+                    Console.WriteLine("");
+                    if (n > 0)
+                    {
+                        PrintPatternAnyComplexity(n);
+                        Console.WriteLine("");
+                        PrintPatternLinearComplexity(n);
+                        break;
+                    } // end of if block
+                    else
+                    {
+                        Console.WriteLine("\nOnly positive integers are allowed.\n");
+                    } // end of else block
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for triangle
 
 
-            //// print the length of a continuous increasing subsequence
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        // collect data from user and convert to an integer array
-            //        Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
-            //        string input = Console.ReadLine();
-            //        string[] strArr = input.Split(",");
-            //        int[] array1 = new int[strArr.Length];
-            //        int num;
-            //        for (int i = 0; i < array1.Length; i++)
-            //        {
-            //            num = Convert.ToInt32(strArr[i]);
-            //            array1[i] = num;
-            //        }
-            //        int result = LongestSubSeq(array1);
-            //        if (result == -1)
-            //        {
-            //            break;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.");
-            //            Console.ReadKey();
-            //            break;
-            //        }
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...");
-            //    }  // end of catch block
-            //} // end of while loop for increasing subsequence
+            // print the length of a continuous increasing subsequence
+            while (true)
+            {
+                try
+                {
+                    // collect data from user and convert to an integer array
+                    Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
+                    string input = Console.ReadLine();
+                    string[] strArr = input.Split(",");
+                    int[] array1 = new int[strArr.Length];
+                    int num;
+                    for (int i = 0; i < array1.Length; i++)
+                    {
+                        num = Convert.ToInt32(strArr[i]);
+                        array1[i] = num;
+                    }
+                    int result = LongestSubSeq(array1);
+                    if (result == -1)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.");
+                        Console.ReadKey();
+                        break;
+                    }
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...");
+                }  // end of catch block
+            } // end of while loop for increasing subsequence
 
 
-            //// split an array of integers conditionally and print them, else print false
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        // collect data from user and convert to an integer array
-            //        Console.WriteLine("Enter a comma-separated array of positive integers in any order:\n");
-            //        string input = Console.ReadLine();
-            //        string[] strArr = input.Split(",");
-            //        int[] array2 = new int[strArr.Length];
-            //        int num;
-            //        for (int i = 0; i < array2.Length; i++)
-            //        {
-            //            num = Convert.ToInt32(strArr[i]);
-            //            if (num >= 0)
-            //            {
-            //                array2[i] = num;
-            //            }
-            //            else
-            //            {
-            //                throw new ArgumentOutOfRangeException();
-            //            }
-            //        } // end of for loop
-            //        PrintTwoParts(array2);
-            //        break;
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for split array
+            // split an array of integers conditionally and print them, else print false
+            while (true)
+            {
+                try
+                {
+                    // collect data from user and convert to an integer array
+                    Console.WriteLine("Enter a comma-separated array of positive integers in any order:\n");
+                    string input = Console.ReadLine();
+                    string[] strArr = input.Split(",");
+                    int[] array2 = new int[strArr.Length];
+                    int num;
+                    for (int i = 0; i < array2.Length; i++)
+                    {
+                        num = Convert.ToInt32(strArr[i]);
+                        if (num >= 0)
+                        {
+                            array2[i] = num;
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                    } // end of for loop
+                    PrintTwoParts(array2);
+                    break;
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for split array
 
 
-            //// square values of an array and return sorted squares
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        // collect data from user, validate, and convert to an integer array
-            //        Console.WriteLine(@"
-            //Enter a comma-separated array of integers sorted in non-decreasing order.
-            //The minimum allowable length is 1.
-            //The maximum allowable length is 10,000.
-            //The minimum allowable value is -10,000.
-            //The maximum allowable value is 10,000.
-            //");
-            //        string input = Console.ReadLine();
-            //        string[] strArr = input.Split(",");
-            //        if (strArr.Length > 10000)
-            //        {
-            //            throw new ArgumentOutOfRangeException();
-            //        }
-            //        int[] array3 = new int[strArr.Length];
-            //        int num;
-            //        for (int i = 0; i < array3.Length; i++)
-            //        {
-            //            num = Convert.ToInt32(strArr[i]);
-            //            array3[i] = num;
-            //            if (i > 0 && array3[i] < array3[i - 1])
-            //            {
-            //                throw new ArgumentOutOfRangeException();
-            //            }
-            //            if (array3[i] < -10000 || array3[i] > 10000)
-            //            {
-            //                throw new ArgumentOutOfRangeException();
-            //            }
-            //        } // end of for loop
-            //        int[] result2 = SortedSquares(array3);
-            //        if (result2 == null)
-            //        {
-            //            break;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("\n[" + string.Join(", ", result2) + "]");
-            //            Console.WriteLine("\nPress any key to continue ...\n");
-            //            Console.ReadKey();
-            //            break;
-            //        }
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for sorted squares
+            // square values of an array and return sorted squares
+            while (true)
+            {
+                try
+                {
+                    // collect data from user, validate, and convert to an integer array
+                    Console.WriteLine(@"
+Enter a comma-separated array of integers sorted in non-decreasing order.
+The minimum allowable length is 1.
+The maximum allowable length is 10,000.
+The minimum allowable value is -10,000.
+The maximum allowable value is 10,000.
+");
+                    string input = Console.ReadLine();
+                    string[] strArr = input.Split(",");
+                    if (strArr.Length > 10000)
+                    {
+                        throw new ArgumentOutOfRangeException();
+                    }
+                    int[] array3 = new int[strArr.Length];
+                    int num;
+                    for (int i = 0; i < array3.Length; i++)
+                    {
+                        num = Convert.ToInt32(strArr[i]);
+                        array3[i] = num;
+                        if (i > 0 && array3[i] < array3[i - 1])
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                        if (array3[i] < -10000 || array3[i] > 10000)
+                        {
+                            throw new ArgumentOutOfRangeException();
+                        }
+                    } // end of for loop
+                    int[] result2 = SortedSquares(array3);
+                    if (result2 == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n[" + string.Join(", ", result2) + "]");
+                        Console.WriteLine("\nPress any key to continue ...\n");
+                        Console.ReadKey();
+                        break;
+                    }
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for sorted squares
 
 
-            //// find and print intersection of two arrays
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        // collect data from user and convert to the first integer array
-            //        Console.WriteLine("Enter the first comma-separated array of integers in any order:\n");
-            //        string input1 = Console.ReadLine();
-            //        string[] strArr1 = input1.Split(",");
-            //        int[] nums1 = new int[strArr1.Length];
-            //        int num1;
-            //        for (int i = 0; i < nums1.Length; i++)
-            //        {
-            //            num1 = Convert.ToInt32(strArr1[i]);
-            //            nums1[i] = num1;
-            //        } // end of for loop
-            //        // collect data from user and convert to the second integer array
-            //        Console.WriteLine("\nEnter the second comma-separated array of integers in any order:\n");
-            //        string input2 = Console.ReadLine();
-            //        string[] strArr2 = input2.Split(",");
-            //        int[] nums2 = new int[strArr2.Length];
-            //        int num2;
-            //        for (int i = 0; i < nums2.Length; i++)
-            //        {
-            //            num2 = Convert.ToInt32(strArr2[i]);
-            //            nums2[i] = num2;
-            //        } // end of for loop
-            //        int[] intersect1 = Intersect(nums1, nums2);
-            //        if (intersect1 == null)
-            //        {
-            //            break;
-            //        }
-            //        else
-            //        {
-            //            Console.WriteLine("\n[" + string.Join(", ", intersect1) + "]");
-            //            Console.WriteLine("\nPress any key to continue ...\n");
-            //            Console.ReadKey();
-            //            break;
-            //        }
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for intersection
+            // find and print intersection of two arrays
+            while (true)
+            {
+                try
+                {
+                    // collect data from user and convert to the first integer array
+                    Console.WriteLine("Enter the first comma-separated array of integers in any order:\n");
+                    string input1 = Console.ReadLine();
+                    string[] strArr1 = input1.Split(",");
+                    int[] nums1 = new int[strArr1.Length];
+                    int num1;
+                    for (int i = 0; i < nums1.Length; i++)
+                    {
+                        num1 = Convert.ToInt32(strArr1[i]);
+                        nums1[i] = num1;
+                    } // end of for loop
+                    // collect data from user and convert to the second integer array
+                    Console.WriteLine("\nEnter the second comma-separated array of integers in any order:\n");
+                    string input2 = Console.ReadLine();
+                    string[] strArr2 = input2.Split(",");
+                    int[] nums2 = new int[strArr2.Length];
+                    int num2;
+                    for (int i = 0; i < nums2.Length; i++)
+                    {
+                        num2 = Convert.ToInt32(strArr2[i]);
+                        nums2[i] = num2;
+                    } // end of for loop
+                    int[] intersect1 = Intersect(nums1, nums2);
+                    if (intersect1 == null)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("\n[" + string.Join(", ", intersect1) + "]");
+                        Console.WriteLine("\nPress any key to continue ...\n");
+                        Console.ReadKey();
+                        break;
+                    }
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for intersection
 
 
-            //// determine whether the number of occurrences of each value in an array is unique
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        // collect data from user and convert to an integer array
-            //        Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
-            //        string input1 = Console.ReadLine();
-            //        string[] strArr1 = input1.Split(",");
-            //        int[] arr = new int[strArr1.Length];
-            //        int num;
-            //        for (int i = 0; i < arr.Length; i++)
-            //        {
-            //            num = Convert.ToInt32(strArr1[i]);
-            //            arr[i] = num;
-            //        } // end of for loop
-            //        Console.WriteLine("\n" + UniqueOccurrences(arr));
-            //        Console.WriteLine("\nPress any key to continue ...\n");
-            //        Console.ReadKey();
-            //        break;
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for unique occurrences
+            // determine whether the number of occurrences of each value in an array is unique
+            while (true)
+            {
+                try
+                {
+                    // collect data from user and convert to an integer array
+                    Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
+                    string input1 = Console.ReadLine();
+                    string[] strArr1 = input1.Split(",");
+                    int[] arr = new int[strArr1.Length];
+                    int num;
+                    for (int i = 0; i < arr.Length; i++)
+                    {
+                        num = Convert.ToInt32(strArr1[i]);
+                        arr[i] = num;
+                    } // end of for loop
+                    Console.WriteLine("\n" + UniqueOccurrences(arr));
+                    Console.WriteLine("\nPress any key to continue ...\n");
+                    Console.ReadKey();
+                    break;
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for unique occurrences
 
 
             // find missing ranges in an array
@@ -259,10 +259,11 @@ namespace Assignment2_Fall2020
                         num = Convert.ToInt32(strArr[i]);
                         numbers[i] = num;
                     } // end of for loop
-                    // the next line of code threw error CS0120: object reference required for the non-static method
-                    // method Ranges was not static, which caused the error
-                    // method Ranges was the only non-static method in the Program.cs file provided by the professor
-                    // making the method static eliminates the error
+                    /* the next line of code threw error CS0120: object reference required for the non-static method
+                     * method Ranges was not static, which caused the error
+                     * method Ranges was the only non-static method in the Program.cs file provided by the professor
+                     * making the method static eliminates the error
+                     */
                     List<string> ResultList = Ranges(numbers, lower, upper);
                     if (ResultList == null)
                     {
@@ -283,7 +284,7 @@ namespace Assignment2_Fall2020
             } // end of while loop for missing ranges
 
 
-            //// purpose
+            //// create unique folder names
             //while (true)
             //{
             //    try
@@ -298,7 +299,7 @@ namespace Assignment2_Fall2020
             //    {
             //        Console.WriteLine("\nInvalid input ...\n");
             //    } // end of catch block
-            //} // end of while loop for purpose
+            //} // end of while loop for unique folder names
 
         } // end of method Main
 
@@ -598,10 +599,11 @@ namespace Assignment2_Fall2020
 
         public static List<string> Ranges(int[] numbers, int lower, int upper)
         {
-            // Given a non-decreasing integer array nums, where the range of elements
-            // are in the inclusive range [lower, upper], return its missing ranges.
-            // Return empty array if the given array contains all the elements from the range
-            // or return ["0->99"] if the given array is empty.
+            /* Given a non-decreasing integer array nums, where the range of elements
+             * are in the inclusive range [lower, upper], return its missing ranges.
+             * Return empty array if the given array contains all the elements from the range
+             * or return ["0->99"] if the given array is empty.
+             */
             try
             {
                 List<string> missing = new List<string>();
@@ -653,6 +655,13 @@ namespace Assignment2_Fall2020
 
         public static string[] UniqFolderNames(string[] names)
         {
+            /* Given an array of strings names of size n, you will create output string array
+             * which stores folder names. Since two files cannot have the same name, if you enter
+             * a folder name which is previously used, the system will have a suffix addition to
+             * its name in the form of(k) where, k is the smallest positive integer such that the
+             * obtained name remains unique. Return an array of strings of length n where the names
+             * of the files are according to the assignments by the system.
+             */
             try
             {
                 string[] folders = new string[] { "" };
