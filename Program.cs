@@ -7,8 +7,6 @@ namespace Assignment2_Fall2020
 {
     class Program
     {
-
-
         static void Main(string[] args)
         {
             //// print a triangle of arbitary height
@@ -207,24 +205,72 @@ namespace Assignment2_Fall2020
             //} // end of while loop for intersection
 
 
-            Console.WriteLine("Question 6");
-            int[] arr = new int[] { 1, 2, 2, 1, 1, 3 };
-            Console.WriteLine(UniqueOccurrences(arr));
+            //// determine whether the number of occurrences of each value in an array is unique
+            //while (true)
+            //{
+            //    try
+            //    {
+            //        // collect data from user and convert to an integer array
+            //        Console.WriteLine("Enter a comma-separated array of integers in any order:\n");
+            //        string input1 = Console.ReadLine();
+            //        string[] strArr1 = input1.Split(",");
+            //        int[] arr = new int[strArr1.Length];
+            //        int num;
+            //        for (int i = 0; i < arr.Length; i++)
+            //        {
+            //            num = Convert.ToInt32(strArr1[i]);
+            //            arr[i] = num;
+            //        } // end of for loop
+            //        Console.WriteLine("\n" + UniqueOccurrences(arr));
+            //        Console.WriteLine("\nPress any key to continue ...\n");
+            //        Console.ReadKey();
+            //        break;
+            //    } // end of try block
+            //    catch
+            //    {
+            //        Console.WriteLine("\nInvalid input ...\n");
+            //    } // end of catch block
+            //} // end of while loop for unique occurrences
 
 
-            //Console.WriteLine("Question 7");
-            //int[] numbers = { 0, 1, 3, 50, 75 };
-            //int lower = 0;
-            //int upper = 99;
-            //List<String> ResultList = Ranges(numbers, lower, upper);
-            ////Write code to print list here
+            // purpose
+            while (true)
+            {
+                try
+                {
+                    // explain
+                    Console.WriteLine("Question 7");
+                    int[] numbers = { 0, 1, 3, 50, 75 };
+                    int lower = 0;
+                    int upper = 99;
+                    List<String> ResultList = Ranges(numbers, lower, upper);
+                    //Write code to print list here
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for purpose
 
 
-            //Console.WriteLine("Question 8");
-            //string[] names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
-            //string[] namesResult = UniqFolderNames(names);
-            ////Write code to print your result here
-        }
+            //// purpose
+            //while (true)
+            //{
+            //    try
+            //    {
+            //        // explain
+            //        Console.WriteLine("Question 8");
+            //        string[] names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
+            //        string[] namesResult = UniqFolderNames(names);
+            //        //Write code to print your result here
+            //    } // end of try block
+            //    catch
+            //    {
+            //        Console.WriteLine("\nInvalid input ...\n");
+            //    } // end of catch block
+            //} // end of while loop for purpose
+
+        } // end of method Main
 
 
         public static void PrintPatternAnyComplexity(int n)
@@ -261,7 +307,7 @@ namespace Assignment2_Fall2020
                 Console.ReadKey();
             } // end of catch block
         } // end of method PrintPatternAnyComplexity
-        // if n = number of lines then O(2n) which simplifies to O(n)
+        // if n = number of lines, then O(2n) which simplifies to O(n)
 
 
         public static void PrintPatternLinearComplexity(int n)
@@ -293,7 +339,7 @@ namespace Assignment2_Fall2020
                 Console.ReadKey();
             } // end of catch block
         } // end of method PrintPatternLinearComplexity
-        // if n = number of lines then O(n)
+        // if n = number of lines, then O(n)
 
 
         public static int LongestSubSeq(int[] nums)
@@ -330,7 +376,7 @@ namespace Assignment2_Fall2020
                 return -1;
             } // end of catch block
         } // end of method LongestSubSeq
-        // if n = length of input array then O(n)
+        // if n = length of input array, then O(n)
 
 
         public static void PrintTwoParts(int[] array2)
@@ -378,7 +424,7 @@ namespace Assignment2_Fall2020
                 Console.ReadKey();
             } // end of catch block
         } // end of method PrintTwoParts
-        // if n = length of input array then O(n)
+        // if n = length of input array, then O(n)
 
 
         public static int[] SortedSquares(int[] A)
@@ -436,7 +482,7 @@ namespace Assignment2_Fall2020
                 return null;
             } // end of catch block
         } // end of method SortedSquares
-        // if n = length of input array then O(2n) which simplifies to O(n)
+        // if n = length of input array, then O(2n) which simplifies to O(n)
 
 
         public static int[] Intersect(int[] nums1, int[] nums2)
@@ -480,8 +526,8 @@ namespace Assignment2_Fall2020
                 return null;
             } // end of catch block
         } // end of method Intersect
-        // if n = total length of both input arrays then O(n)
-        // if n = length of first array & k = length of second array then O(n+k) which simplifies to O(n)
+        // if n = total length of both input arrays, then O(n)
+        // if n = length of first array & k = length of second array, then O(n+k) which simplifies to O(n)
 
 
         public static bool UniqueOccurrences(int[] arr)
@@ -490,16 +536,34 @@ namespace Assignment2_Fall2020
             // the number of occurrences of each value in the array is unique.
             try
             {
-                //
-
-            }
-            catch (Exception)
+                // create and populate a dictionary of array value counters
+                Dictionary<int, int> uo = new Dictionary<int, int>();
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    if (uo.TryAdd(arr[i], 1)) { }
+                    else { uo[arr[i]]++; }
+                }
+                // create and populate a dictionary of unique counter values
+                Dictionary<int, int> uc = new Dictionary<int, int>();
+                foreach (KeyValuePair<int, int> kvp in uo)
+                {
+                    if (uc.TryAdd(kvp.Value, 1)) { }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            } // end of try block
+            catch (Exception e)
             {
-
-                throw;
-            }
-            return default;
+                Console.WriteLine($"\nAn {e.GetType().Name} error occured while computing UniqueOccurrences()");
+                Console.WriteLine("\nPress any key to continue ...\n");
+                Console.ReadKey();
+                return false;
+            } // end of catch block
         } // end of method UniqueOccurrences
+          // if n = total length of the input array, then O(2n) which simplifies to O(n)
 
 
         public List<String> Ranges(int[] numbers, int lower, int upper)
@@ -507,13 +571,13 @@ namespace Assignment2_Fall2020
             try
             {
                 //
-                
-            }
+
+            } // end of try block
             catch (Exception)
             {
 
                 throw;
-            }
+            } // end of catch block
             return default;
         } // end of method Ranges
 
@@ -524,12 +588,12 @@ namespace Assignment2_Fall2020
             {
                 //
 
-            }
+            } // end of try block
             catch (Exception)
             {
 
                 throw;
-            }
+            } // end of catch block
             return default;
         } // end of method UniqFolderNames
     }
