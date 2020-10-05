@@ -14,7 +14,7 @@ namespace Assignment2_Fall2020
             {
                 try
                 {
-                    Console.WriteLine("\n** print a triangle of arbitary height **\n"); 
+                    Console.WriteLine("\n** print a triangle of arbitary height **\n");
                     Console.WriteLine("Please enter a positive integer:");
                     int n = int.Parse(Console.ReadLine());
                     Console.WriteLine("");
@@ -179,7 +179,7 @@ The maximum allowable value is 10,000.
                         num1 = Convert.ToInt32(strArr1[i]);
                         nums1[i] = num1;
                     } // end of for loop
-                    // collect data from user and convert to the second integer array
+                      // collect data from user and convert to the second integer array
                     Console.WriteLine("\nEnter the second comma-separated array of integers in any order:\n");
                     string input2 = Console.ReadLine();
                     string[] strArr2 = input2.Split(",");
@@ -291,23 +291,109 @@ The maximum allowable value is 10,000.
             } // end of while loop for missing ranges
 
 
-            //// create unique folder names
-            //while (true)
-            //{
-            //    try
-            //    {
-            //        Console.WriteLine("\n** create unique folder names **\n");
-            //        // explain
-            //        Console.WriteLine("Question 8");
-            //        string[] names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
-            //        string[] namesResult = UniqFolderNames(names);
-            //        //Write code to print your result here
-            //    } // end of try block
-            //    catch
-            //    {
-            //        Console.WriteLine("\nInvalid input ...\n");
-            //    } // end of catch block
-            //} // end of while loop for unique folder names
+            // create unique folder names
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("\n** create unique folder names **\n");
+                    // collect a string of names from the user and convert to string array
+                    string[] names;
+                    string[] namesResult;
+                    Console.WriteLine("\nEnter 1 to see a menu or enter a comma-separated list of names:\n");
+                    string input = Console.ReadLine();
+                    if (input == "1")
+                    {
+                        Console.WriteLine(@"
+Press 1 for [pes, fifa, gta, pes(2019)].
+Press 2 for [gta, gta(1), gta, avalon].
+Press 3 for [onepiece, onepiece(1), onepiece(2), onepiece(3), onepiece].
+Press 4 for [wano, wano, wano, wano].
+");
+                        string choice = Console.ReadLine(); 
+                        switch (choice)
+                        {
+                            case "1":
+                                names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
+                                namesResult = UniqFolderNames(names);
+                                if (namesResult == null)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
+                                    Console.WriteLine("\nPress any key to continue ...\n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            case "2":
+                                names = new string[] { "gta", "gta(1)", "gta", "avalon" };
+                                namesResult = UniqFolderNames(names);
+                                if (namesResult == null)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
+                                    Console.WriteLine("\nPress any key to continue ...\n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            case "3":
+                                names = new string[] { "onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece" };
+                                namesResult = UniqFolderNames(names);
+                                if (namesResult == null)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
+                                    Console.WriteLine("\nPress any key to continue ...\n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                            case "4":
+                                names = new string[] { "wano", "wano", "wano", "wano" };
+                                namesResult = UniqFolderNames(names);
+                                if (namesResult == null)
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
+                                    Console.WriteLine("\nPress any key to continue ...\n");
+                                    Console.ReadKey();
+                                    break;
+                                }
+                        } // end of switch block
+                        break;
+                    } // end of input == 1 block
+                    else
+                    {
+                        names = input.Split(",");
+                        namesResult = UniqFolderNames(names);
+                        if (namesResult == null)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
+                            Console.WriteLine("\nPress any key to continue ...\n");
+                            Console.ReadKey();
+                            break;
+                        }
+                    } // end of input block
+                } // end of try block
+                catch
+                {
+                    Console.WriteLine("\nInvalid input ...\n");
+                } // end of catch block
+            } // end of while loop for unique folder names
 
         } // end of method Main
 
@@ -672,8 +758,55 @@ The maximum allowable value is 10,000.
              */
             try
             {
-                string[] folders = new string[] { };
-
+                string[] folders = new string[names.Length];
+                Dictionary<string, int> dict = new Dictionary<string, int>();
+                foreach (string i in names)
+                {
+                    if (dict.TryAdd(i, 1))
+                    { }
+                    else
+                    {
+                        dict[i]++;
+                    }
+                } // end of foreach loop
+                int foldIdx = 0;
+                foreach (KeyValuePair<string, int> kvp in dict)
+                {
+                    int val = kvp.Value;
+                    if (!folders.Contains(kvp.Key))
+                    {
+                        folders[foldIdx] = kvp.Key;
+                        foldIdx++;
+                        val--;
+                        while (val > 0)
+                        {
+                            int k = 1;
+                            while (folders.Contains(kvp.Key + "(" + k + ")"))
+                            {
+                                k++;
+                            }
+                            folders[foldIdx] = kvp.Key + "(" + k + ")";
+                            foldIdx++;
+                            val--;
+                        }
+                    }
+                    else
+                    {
+                        while (val > 0)
+                        {
+                            int k = 1;
+                            string newKey = kvp.Key;
+                            newKey = newKey.Remove(newKey.Length-3);
+                            while (folders.Contains(newKey + "(" + k + ")"))
+                            {
+                                k++;
+                            }
+                            folders[foldIdx] = newKey + "(" + k + ")";
+                            foldIdx++;
+                            val--;
+                        }
+                    }
+                }
                 return folders;
             } // end of try block
             catch (Exception e)
@@ -681,7 +814,7 @@ The maximum allowable value is 10,000.
                 Console.WriteLine($"\nAn {e.GetType().Name} error occured while computing UniqFolderNames()");
                 Console.WriteLine("\nPress any key to continue ...\n");
                 Console.ReadKey();
-                return new string[] { };
+                return null;
             } // end of catch block
         } // end of method UniqFolderNames
     }
