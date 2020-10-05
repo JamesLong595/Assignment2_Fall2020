@@ -61,7 +61,8 @@ namespace Assignment2_Fall2020
                     }
                     else
                     {
-                        Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.\n");
+                        Console.WriteLine("\nThe longest continuous increasing subsequence is " + result + " elements long.");
+                        Console.WriteLine("\nPress any key to continue ...\n");
                         Console.ReadKey();
                         break;
                     }
@@ -87,7 +88,7 @@ namespace Assignment2_Fall2020
                     int num;
                     for (int i = 0; i < array2.Length; i++)
                     {
-                        num = Convert.ToInt32(strArr[i]);
+                        num = Convert.ToInt32(strArr[i]); // throws error if input array is empty; desirable since an empty array cannot be split
                         if (num >= 0)
                         {
                             array2[i] = num;
@@ -316,59 +317,23 @@ Press 4 for [wano, wano, wano, wano].
                             case "1":
                                 names = new string[] { "pes", "fifa", "gta", "pes(2019)" };
                                 namesResult = UniqFolderNames(names);
-                                if (namesResult == null)
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
-                                    Console.WriteLine("\nPress any key to continue ...\n");
-                                    Console.ReadKey();
-                                    break;
-                                }
+                                PrintFolderNames(namesResult);
+                                break;
                             case "2":
                                 names = new string[] { "gta", "gta(1)", "gta", "avalon" };
                                 namesResult = UniqFolderNames(names);
-                                if (namesResult == null)
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
-                                    Console.WriteLine("\nPress any key to continue ...\n");
-                                    Console.ReadKey();
-                                    break;
-                                }
+                                PrintFolderNames(namesResult);
+                                break;
                             case "3":
                                 names = new string[] { "onepiece", "onepiece(1)", "onepiece(2)", "onepiece(3)", "onepiece" };
                                 namesResult = UniqFolderNames(names);
-                                if (namesResult == null)
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
-                                    Console.WriteLine("\nPress any key to continue ...\n");
-                                    Console.ReadKey();
-                                    break;
-                                }
+                                PrintFolderNames(namesResult);
+                                break;
                             case "4":
                                 names = new string[] { "wano", "wano", "wano", "wano" };
                                 namesResult = UniqFolderNames(names);
-                                if (namesResult == null)
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
-                                    Console.WriteLine("\nPress any key to continue ...\n");
-                                    Console.ReadKey();
-                                    break;
-                                }
+                                PrintFolderNames(namesResult);
+                                break;
                         } // end of switch block
                         break;
                     } // end of input == 1 block
@@ -376,17 +341,8 @@ Press 4 for [wano, wano, wano, wano].
                     {
                         names = input.Split(",");
                         namesResult = UniqFolderNames(names);
-                        if (namesResult == null)
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("\n[\"" + string.Join("\", \"", namesResult) + "\"]");
-                            Console.WriteLine("\nPress any key to continue ...\n");
-                            Console.ReadKey();
-                            break;
-                        }
+                        PrintFolderNames(namesResult);
+                        break;
                     } // end of input block
                 } // end of try block
                 catch
@@ -513,34 +469,36 @@ Press 4 for [wano, wano, wano, wano].
             {
                 int sum1 = 0;
                 int sum2 = array2.Sum();
-                for (int i = 0; i < array2.Length; i++)
+                if (array2.Length == 1) // a singleton array cannot be split
                 {
-                    sum1 += array2[i];
-                    sum2 -= array2[i];
-                    if (array2.Length == 1)
+                    Console.WriteLine("\nFalse");
+                    Console.WriteLine("\nPress any key to continue ...\n");
+                    Console.ReadKey();
+                }
+                else
+                {
+                    for (int i = 0; i < array2.Length; i++)
                     {
-                        Console.WriteLine("\nFalse");
-                        Console.WriteLine("\nPress any key to continue ...\n");
-                        Console.ReadKey();
-                        break;
-                    }
-                    else if (sum1 == sum2)
-                    {
-                        int[] subArr1 = array2[0..(i + 1)];
-                        int[] subArr2 = array2[(i + 1)..array2.Length];
-                        Console.WriteLine("\n[" + string.Join(", ", subArr1) + "]" + "\n[" + string.Join(", ", subArr2) + "]\n");
-                        Console.WriteLine("\nPress any key to continue ...\n");
-                        Console.ReadKey();
-                        break;
-                    }
-                    else if (i == array2.Length - 1)
-                    {
-                        Console.WriteLine("\nFalse");
-                        Console.WriteLine("\nPress any key to continue ...\n");
-                        Console.ReadKey();
-                        break;
-                    }
-                } // end of for loop
+                        sum1 += array2[i];
+                        sum2 -= array2[i];
+                        if (sum1 == sum2)
+                        {
+                            int[] subArr1 = array2[0..(i + 1)];
+                            int[] subArr2 = array2[(i + 1)..array2.Length];
+                            Console.WriteLine("\n[" + string.Join(", ", subArr1) + "]" + "\n[" + string.Join(", ", subArr2) + "]\n");
+                            Console.WriteLine("\nPress any key to continue ...\n");
+                            Console.ReadKey();
+                            break;
+                        }
+                        else if (i == array2.Length - 1)
+                        {
+                            Console.WriteLine("\nFalse");
+                            Console.WriteLine("\nPress any key to continue ...\n");
+                            Console.ReadKey();
+                            break;
+                        }
+                    } // end of for loop
+                } // end of if-else block
             } // end of try block
             catch (Exception e)
             {
@@ -621,8 +579,7 @@ Press 4 for [wano, wano, wano, wano].
                 List<int> lst = new List<int>();
                 foreach (int i in nums1)
                 {
-                    if (dict.TryAdd(i, 1))
-                    { }
+                    if (dict.TryAdd(i, 1)) { }
                     else
                     {
                         dict[i]++;
@@ -636,12 +593,7 @@ Press 4 for [wano, wano, wano, wano].
                         dict[i]--;
                     }
                 }
-                int[] intersection = new int[lst.Count];
-                for (int i = 0; i < lst.Count; i++)
-                {
-                    intersection[i] = lst[i];
-                }
-                return intersection;
+                return lst.ToArray();
             } // end of try block
             catch (Exception e)
             {
@@ -669,13 +621,16 @@ Press 4 for [wano, wano, wano, wano].
                     else { uo[arr[i]]++; }
                 }
                 // create and populate a dictionary of unique counter values
-                Dictionary<int, int> uc = new Dictionary<int, int>();
+                HashSet<int> uc = new HashSet<int>();
                 foreach (KeyValuePair<int, int> kvp in uo)
                 {
-                    if (uc.TryAdd(kvp.Value, 1)) { }
-                    else
+                    if (uc.Contains(kvp.Value))
                     {
                         return false;
+                    }
+                    else
+                    {
+                        uc.Add(kvp.Value);
                     }
                 }
                 return true;
@@ -796,7 +751,8 @@ Press 4 for [wano, wano, wano, wano].
                         {
                             int k = 1;
                             string newKey = kvp.Key;
-                            newKey = newKey.Remove(newKey.Length-3);
+                            int remIdx = newKey.LastIndexOf("(");
+                            newKey = newKey.Remove(remIdx);
                             while (folders.Contains(newKey + "(" + k + ")"))
                             {
                                 k++;
@@ -818,5 +774,17 @@ Press 4 for [wano, wano, wano, wano].
             } // end of catch block
         } // end of method UniqFolderNames
         // if n = length of the input array, then O(2n) which simplifies to O(n)
+
+        public static void PrintFolderNames(string[] fnames)
+        {
+            if (fnames == null) { }
+            else
+            {
+                Console.WriteLine("\n[\"" + string.Join("\", \"", fnames) + "\"]");
+                Console.WriteLine("\nPress any key to continue ...\n");
+                Console.ReadKey();
+            }
+
+        }
     }
 }
