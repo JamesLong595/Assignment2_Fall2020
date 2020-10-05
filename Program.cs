@@ -817,5 +817,6 @@ Press 4 for [wano, wano, wano, wano].
                 return null;
             } // end of catch block
         } // end of method UniqFolderNames
+        // if n = length of the input array, then O(2n) which simplifies to O(n)
     }
 }
